@@ -1,8 +1,12 @@
 import express from 'express';
 import cors from 'cors';
+import cookieParser from 'cookie-parser';
 import config from './config/config.js';
 import routes from './routes/index.js';
 import connectDB from './config/db.js';
+
+
+// Connect Database
 
 
 const app = express();
@@ -11,6 +15,8 @@ const PORT = config.PORT || 5000;
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
 app.use(express.json());
+app.use(cookieParser());
+
 app.use(
     cors({
         origin: 'http://localhost:3000',
